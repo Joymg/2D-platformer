@@ -8,19 +8,19 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ground
+  - CameraConfiner
+  - ClimbingElement
+  - Hittable
+  - Tools
+  - Platform
+  - Spawnpoint
+  - Pickup
+  - Enemy
+  - AgentCollider
   - 
   - 
   - 
@@ -65,7 +65,7 @@ TagManager:
   - name: Front
     uniqueID: 1126866333
     locked: 0
-  - name: Pickable
+  - name: Pickups
     uniqueID: 2038890377
     locked: 0
   - name: UI
