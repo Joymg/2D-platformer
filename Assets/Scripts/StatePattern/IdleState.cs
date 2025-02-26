@@ -6,7 +6,7 @@ namespace Joymg.Platformer2D.States
     public class IdleState: AgentState
     {
         public State MoveState;
-        protected override void EnterState()
+        public override void EnterState()
         {
             _agent.animatorManager.PlayAnimation(AnimationType.Idle);
         }
@@ -15,7 +15,7 @@ namespace Joymg.Platformer2D.States
         {
             if (Mathf.Abs(input.x) > 0)
             {
-                _agent.SetState(MoveState, this);
+                _agent.SetState(MoveState);
             }
         }
     }

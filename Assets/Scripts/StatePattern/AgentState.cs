@@ -18,7 +18,7 @@ namespace Joymg.Platformer2D.States
             EnterState();
         }
 
-        protected override void EnterState()
+        public override void EnterState()
         {
         }
         
@@ -26,7 +26,7 @@ namespace Joymg.Platformer2D.States
         {
         }
 
-        protected override void ExitState()
+        public override void ExitState()
         {
             _agent.agentInput.OnMovement -= HandleMovement;
             _agent.agentInput.OnJumpPressed -= HandleJumpPressed;

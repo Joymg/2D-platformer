@@ -22105,7 +22105,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7152116109757472415, guid: a918fc610c23a3940a75f1acfb5a32bf, type: 3}
   m_PrefabInstance: {fileID: 8893858147933022330}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1854732145
+--- !u!114 &1854732146
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -22114,13 +22114,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1854732142}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aad11b4079ec1fd49920b38b4113e7a4, type: 3}
+  m_Script: {fileID: 11500000, guid: 719fbd27f6114fb3bad42cb6ab4ff4f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  body: {fileID: 0}
-  playerInput: {fileID: 0}
-  animatorManager: {fileID: 0}
-  agentRenderer: {fileID: 0}
+  horizontalMovementDirection: 0
+  currentSpeed: 0
+  currentVelocity: {x: 0, y: 0}
 --- !u!1 &1898438076
 GameObject:
   m_ObjectHideFlags: 0
@@ -27446,6 +27445,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Agent
       objectReference: {fileID: 0}
+    - target: {fileID: 8068164361129349337, guid: a918fc610c23a3940a75f1acfb5a32bf, type: 3}
+      propertyPath: maxSpeed
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068164361129349337, guid: a918fc610c23a3940a75f1acfb5a32bf, type: 3}
+      propertyPath: acceleration
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068164361129349337, guid: a918fc610c23a3940a75f1acfb5a32bf, type: 3}
+      propertyPath: deceleration
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 8496779008720897587, guid: a918fc610c23a3940a75f1acfb5a32bf, type: 3}
       propertyPath: m_Controller
       value: 
@@ -27456,7 +27467,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8040284236505875095, guid: a918fc610c23a3940a75f1acfb5a32bf, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1854732145}
+      addedObject: {fileID: 1854732146}
   m_SourcePrefab: {fileID: 100100000, guid: a918fc610c23a3940a75f1acfb5a32bf, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

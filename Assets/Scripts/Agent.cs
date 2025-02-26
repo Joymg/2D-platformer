@@ -12,48 +12,59 @@ namespace Joymg.Platformer2D.Entities
         [SerializeField] public AgentAnimator animatorManager;
         [SerializeField] private AgentRenderer agentRenderer;
 
+        [Header("States")] 
+        public State initialState;
+        public State currentState = null, previousState = null;
+
         private void Awake()
         {
             agentInput = GetComponentInParent<PlayerInput>();
             body = GetComponent<Rigidbody2D>();
             animatorManager = GetComponentInChildren<AgentAnimator>();
             agentRenderer = GetComponentInChildren<AgentRenderer>();
+
+            AgentState[] states = GetComponentsInChildren<AgentState>();
+            foreach (AgentState state in states)
+            {
+                state.InitializeState(this);
+            }
         }
 
         private void Start()
         {
-            agentInput.OnMovement += HandleMovement;
             agentInput.OnMovement += agentRenderer.FaceDirection;
-            agentInput.OnJumpPressed += HandleJump;
+            SetState(initialState);
         }
 
-        private void HandleMovement(Vector2 input)
+        private void Update()
         {
-            if (Mathf.Abs(input.x) > 0)
-            {
-                if (Mathf.Abs(body.velocity.x) < 0.01f)
-                {
-                    animatorManager.PlayAnimation(AnimationType.Run);
-                }
-
-                body.velocity = new Vector2(input.x * 5, body.velocity.y);
-            }
-            else if (Mathf.Abs(body.velocity.x) > 0f)
-            {
-                animatorManager.PlayAnimation(AnimationType.Idle);
-            }
-
-            body.velocity = new Vector2(0, body.velocity.y);
+            currentState.UpdateState();
         }
+
 
         private void HandleJump()
         {
             throw new NotImplementedException();
         }
 
-        public void SetState(State newState, State previousState)
+        public void SetState(State newState)
         {
-            throw new NotImplementedException();
+            if (!newState)
+                return;
+            if (currentState == newState)
+                return;
+
+            currentState?.ExitState();
+            previousState = currentState;
+            currentState = newState;
+            currentState.EnterState();
+
+            DisplayState();
+        }
+
+        private void DisplayState()
+        {
+            Debug.Log($"Agent: {gameObject.name} now in {currentState.GetType()}");
         }
     }
 }

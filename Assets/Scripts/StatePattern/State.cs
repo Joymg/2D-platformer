@@ -7,8 +7,8 @@ namespace Joymg.Platformer2D.States
     {
         public UnityEvent OnEnter, OnExit;
 
-        protected abstract void EnterState();
+        public abstract void EnterState();
         public abstract void UpdateState();
-        protected abstract void ExitState();
+        public abstract void ExitState();
     }
 }

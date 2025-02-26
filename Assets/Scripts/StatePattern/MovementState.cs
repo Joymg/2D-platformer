@@ -16,7 +16,7 @@ namespace Joymg.Platformer2D.States
             movementData = GetComponentInParent<MovementData>();
         }
 
-        protected override void EnterState()
+        public override void EnterState()
         {
             _agent.animatorManager.PlayAnimation(AnimationType.Run);
             movementData.horizontalMovementDirection = 0;
