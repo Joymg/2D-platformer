@@ -1,22 +1,20 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using Joymg.Platformer2D.Input;
+using Joymg.Platformer2D.States;
 using UnityEngine;
 
 namespace Joymg.Platformer2D.Entities
 {
     public class Agent : MonoBehaviour
     {
-
-        [SerializeField] private Rigidbody2D body;
-        [SerializeField] private PlayerInput playerInput;
-        [SerializeField] private AgentAnimator animatorManager;
+        [SerializeField] public Rigidbody2D body;
+        [SerializeField] public PlayerInput agentInput;
+        [SerializeField] public AgentAnimator animatorManager;
         [SerializeField] private AgentRenderer agentRenderer;
-        
+
         private void Awake()
         {
-            playerInput = GetComponentInParent<PlayerInput>();
+            agentInput = GetComponentInParent<PlayerInput>();
             body = GetComponent<Rigidbody2D>();
             animatorManager = GetComponentInChildren<AgentAnimator>();
             agentRenderer = GetComponentInChildren<AgentRenderer>();
@@ -24,8 +22,9 @@ namespace Joymg.Platformer2D.Entities
 
         private void Start()
         {
-            playerInput.OnMovement += HandleMovement;
-            playerInput.OnMovement += agentRenderer.FaceDirection;
+            agentInput.OnMovement += HandleMovement;
+            agentInput.OnMovement += agentRenderer.FaceDirection;
+            agentInput.OnJumpPressed += HandleJump;
         }
 
         private void HandleMovement(Vector2 input)
@@ -36,16 +35,25 @@ namespace Joymg.Platformer2D.Entities
                 {
                     animatorManager.PlayAnimation(AnimationType.Run);
                 }
+
                 body.velocity = new Vector2(input.x * 5, body.velocity.y);
             }
-            else
+            else if (Mathf.Abs(body.velocity.x) > 0f)
             {
-                if (Mathf.Abs(body.velocity.x) > 0f)
-                {
-                    animatorManager.PlayAnimation(AnimationType.Idle);
-                }
-                body.velocity = new Vector2(0, body.velocity.y);
+                animatorManager.PlayAnimation(AnimationType.Idle);
             }
+
+            body.velocity = new Vector2(0, body.velocity.y);
+        }
+
+        private void HandleJump()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetState(State newState, State previousState)
+        {
+            throw new NotImplementedException();
         }
     }
 }
