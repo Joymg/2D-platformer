@@ -41,3 +41,33 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 1847455607
+    locked: 0
+  - name: Details
+    uniqueID: 158672107
+    locked: 0
+  - name: Foreground
+    uniqueID: 692324851
+    locked: 0
+  - name: Exits
+    uniqueID: 2849688623
+    locked: 0
+  - name: Agents
+    uniqueID: 3504484225
+    locked: 0
+  - name: Player
+    uniqueID: 1450043631
+    locked: 0
+  - name: Tools
+    uniqueID: 1354204831
+    locked: 0
+  - name: Front
+    uniqueID: 1126866333
+    locked: 0
+  - name: Pickable
+    uniqueID: 2038890377
+    locked: 0
+  - name: UI
+    uniqueID: 40810561
+    locked: 0
