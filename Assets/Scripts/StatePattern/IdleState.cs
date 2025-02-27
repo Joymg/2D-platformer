@@ -8,6 +8,7 @@ namespace Joymg.Platformer2D.States
         public State MoveState;
         public override void EnterState()
         {
+            base.EnterState();
             _agent.animatorManager.PlayAnimation(AnimationType.Idle);
         }
 

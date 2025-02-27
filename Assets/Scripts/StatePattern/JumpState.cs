@@ -16,6 +16,7 @@ namespace Joymg.Platformer2D.States
 
         public override void EnterState()
         {
+            base.EnterState();
             _agent.animatorManager.PlayAnimation(AnimationType.Jump);
             movementData.currentVelocity = _agent.body.velocity;
             movementData.currentVelocity.y = jumpForce;

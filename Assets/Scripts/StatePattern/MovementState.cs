@@ -18,6 +18,7 @@ namespace Joymg.Platformer2D.States
 
         public override void EnterState()
         {
+            base.EnterState();
             _agent.animatorManager.PlayAnimation(AnimationType.Run);
             movementData.horizontalMovementDirection = 0;
             movementData.currentSpeed = 0f;
@@ -32,20 +33,20 @@ namespace Joymg.Platformer2D.States
             
             if (Mathf.Abs(_agent.body.velocity.x) < 0.01f)
             {
-                _agent.animatorManager.PlayAnimation(AnimationType.Run);
+                _agent.SetState(IdleState);
             }
         }
         
-        private void CalculateVelocity()
+        protected void CalculateVelocity()
         {
             CalculateSpeed(_agent.agentInput.MovementVector);
-            CalulateHorizontalDirection();
-            movementData.currentVelocity = Vector3.right * movementData.horizontalMovementDirection * movementData.currentSpeed;
+            CalculateHorizontalDirection();
+            movementData.currentVelocity = Vector3.right * (movementData.horizontalMovementDirection * movementData.currentSpeed);
             movementData.currentVelocity.y = _agent.body.velocity.y;
             
         }
 
-        private void CalulateHorizontalDirection()
+        protected void CalculateHorizontalDirection()
         {
             if (_agent.agentInput.MovementVector.x > 0f)
             {
@@ -57,7 +58,7 @@ namespace Joymg.Platformer2D.States
             }
         }
 
-        private void CalculateSpeed(Vector2 movementVector)
+        protected void CalculateSpeed(Vector2 movementVector)
         {
             if (Mathf.Abs(movementVector.x) > 0f)
             {
