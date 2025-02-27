@@ -5,7 +5,6 @@ namespace Joymg.Platformer2D.States
 {
     public class FallState : MovementState
     {
-        [SerializeField] private float gravityModifier = 0.5f;
         protected override void PerformEnter()
         {
             _agent.animatorManager.PlayAnimation(AnimationType.Fall);
@@ -32,7 +31,7 @@ namespace Joymg.Platformer2D.States
         private void ControlFallHeight()
         {
             movementData.currentVelocity = _agent.body.velocity;
-            movementData.currentVelocity.y += Physics2D.gravity.y * gravityModifier * Time.deltaTime;
+            movementData.currentVelocity.y += Physics2D.gravity.y * _agent.data.gravityMultiplier * Time.deltaTime;
             _agent.body.velocity = movementData.currentVelocity;
         }
     }

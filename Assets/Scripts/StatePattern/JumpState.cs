@@ -7,18 +7,13 @@ namespace Joymg.Platformer2D.States
     public class JumpState: MovementState
     {
 
-        [SerializeField] private State FallState;
-        [SerializeField] 
-        private float jumpForce = 12f;
-
-        [SerializeField]private float lowJumpGravityMultiplier = 2f;
         private bool jumpPressed = false;
 
         protected override void PerformEnter()
         {
             _agent.animatorManager.PlayAnimation(AnimationType.Jump);
             movementData.currentVelocity = _agent.body.velocity;
-            movementData.currentVelocity.y = jumpForce;
+            movementData.currentVelocity.y = _agent.data.jumpForce;
             _agent.body.velocity = movementData.currentVelocity;
             jumpPressed = true;
         }
@@ -35,12 +30,11 @@ namespace Joymg.Platformer2D.States
 
         private void ControlJumpHeight()
         {
-            if (!jumpPressed)
-            {
-                movementData.currentVelocity = _agent.body.velocity;
-                movementData.currentVelocity.y += Physics2D.gravity.y * lowJumpGravityMultiplier;
-                _agent.body.velocity = movementData.currentVelocity;
-            }
+            if (jumpPressed) return;
+            
+            movementData.currentVelocity = _agent.body.velocity;
+            movementData.currentVelocity.y += Physics2D.gravity.y * _agent.data.cutJumpGravityMultiplier * Time.deltaTime;
+            _agent.body.velocity = movementData.currentVelocity;
         }
 
         protected override void HandleJumpPressed()

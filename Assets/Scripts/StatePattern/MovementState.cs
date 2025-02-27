@@ -9,8 +9,6 @@ namespace Joymg.Platformer2D.States
         [SerializeField] protected MovementData movementData;
         public State IdleState;
 
-        public float acceleration, deceleration, maxSpeed;
-
         private void Awake()
         {
             movementData = GetComponentInParent<MovementData>();
@@ -63,14 +61,14 @@ namespace Joymg.Platformer2D.States
         {
             if (Mathf.Abs(movementVector.x) > 0f)
             {
-                movementData.currentSpeed += acceleration * Time.deltaTime;
+                movementData.currentSpeed += _agent.data.acceleration * Time.deltaTime;
             }
             else
             {
-                movementData.currentSpeed -= deceleration * Time.deltaTime;
+                movementData.currentSpeed -= _agent.data.deceleration * Time.deltaTime;
             }
 
-            movementData.currentSpeed = Mathf.Clamp(movementData.currentSpeed, 0, maxSpeed);
+            movementData.currentSpeed = Mathf.Clamp(movementData.currentSpeed, 0, _agent.data.maxSpeed);
         }
 
         protected void SetPlayerVelocity()

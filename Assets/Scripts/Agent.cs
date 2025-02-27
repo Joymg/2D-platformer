@@ -7,6 +7,8 @@ namespace Joymg.Platformer2D.Entities
 {
     public class Agent : MonoBehaviour
     {
+        [SerializeField] public AgentData_SO data;
+        
         [SerializeField] public Rigidbody2D body;
         [SerializeField] public PlayerInput agentInput;
         [SerializeField] public AgentAnimator animatorManager;
