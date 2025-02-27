@@ -10,6 +10,8 @@ namespace Joymg.Platformer2D.States
         {
             base.EnterState();
             _agent.animatorManager.PlayAnimation(AnimationType.Idle);
+            if (_agent.groundDetector.isGrounded)
+                _agent.body.velocity = Vector2.zero;
         }
 
         protected override void HandleMovement(Vector2 input)
