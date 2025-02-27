@@ -41,6 +41,11 @@ namespace Joymg.Platformer2D.Entities
             currentState.UpdateState();
         }
 
+        private void FixedUpdate()
+        {
+            currentState.FixedUpdateState();
+        }
+
 
         private void HandleJump()
         {
