@@ -11,6 +11,7 @@ namespace Joymg.Platformer2D.Entities
         [SerializeField] public PlayerInput agentInput;
         [SerializeField] public AgentAnimator animatorManager;
         [SerializeField] private AgentRenderer agentRenderer;
+        [SerializeField] public GroundDetector groundDetector;
 
         [Header("States")] 
         public State initialState;
@@ -22,6 +23,7 @@ namespace Joymg.Platformer2D.Entities
             body = GetComponent<Rigidbody2D>();
             animatorManager = GetComponentInChildren<AgentAnimator>();
             agentRenderer = GetComponentInChildren<AgentRenderer>();
+            groundDetector = GetComponentInChildren<GroundDetector>();
 
             AgentState[] states = GetComponentsInChildren<AgentState>();
             foreach (AgentState state in states)
@@ -43,6 +45,7 @@ namespace Joymg.Platformer2D.Entities
 
         private void FixedUpdate()
         {
+            groundDetector.CheckIsGrounded();
             currentState.FixedUpdateState();
         }
 

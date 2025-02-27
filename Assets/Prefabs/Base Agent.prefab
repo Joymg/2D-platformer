@@ -85,6 +85,7 @@ GameObject:
   m_Component:
   - component: {fileID: 433439660612080544}
   - component: {fileID: 7588408607640187528}
+  - component: {fileID: 6201243098725326664}
   m_Layer: 15
   m_Name: Ground Collider
   m_TagString: Untagged
@@ -142,6 +143,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.5, y: 1}
   m_Direction: 0
+--- !u!114 &6201243098725326664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6161727986745025761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db9219ce9ab081646808d39bd8d121ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6476928038083728313
 GameObject:
   m_ObjectHideFlags: 0
