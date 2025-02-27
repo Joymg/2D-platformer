@@ -16,9 +16,8 @@ namespace Joymg.Platformer2D.States
             movementData = GetComponentInParent<MovementData>();
         }
 
-        public override void EnterState()
+        protected override void PerformEnter()
         {
-            base.EnterState();
             _agent.animatorManager.PlayAnimation(AnimationType.Run);
             movementData.horizontalMovementDirection = 0;
             movementData.currentSpeed = 0f;
@@ -27,7 +26,9 @@ namespace Joymg.Platformer2D.States
 
         public override void UpdateState()
         {
-            base.UpdateState();
+            if (IsFalling())
+                return;
+            
             CalculateVelocity();
             SetPlayerVelocity();
             

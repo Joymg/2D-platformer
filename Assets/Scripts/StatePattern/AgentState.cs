@@ -7,7 +7,7 @@ namespace Joymg.Platformer2D.States
     {
         protected Agent _agent;
         [SerializeField]
-        protected AgentState JumpState;
+        protected AgentState JumpState, FallState;
 
         public void InitializeState(Agent agent)
         {
@@ -21,10 +21,20 @@ namespace Joymg.Platformer2D.States
             _agent.agentInput.OnJumpReleased += HandleJumpReleased;
             _agent.agentInput.OnAttack += HandleAttack;
             OnEnter?.Invoke();
+            PerformEnter();
         }
+
+        protected virtual void  PerformEnter() { }
         
-        public override void UpdateState()
+        public override void UpdateState() { }
+
+        protected bool IsFalling()
         {
+            if (_agent.groundDetector.isGrounded) return false;
+            
+            _agent.SetState(FallState);
+            return true;
+
         }
         
         public override void FixedUpdateState()

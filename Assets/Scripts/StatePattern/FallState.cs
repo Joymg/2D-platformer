@@ -6,10 +6,8 @@ namespace Joymg.Platformer2D.States
     public class FallState : MovementState
     {
         [SerializeField] private float gravityModifier = 0.5f;
-
-        public override void EnterState()
+        protected override void PerformEnter()
         {
-            base.EnterState();
             _agent.animatorManager.PlayAnimation(AnimationType.Fall);
         }
         

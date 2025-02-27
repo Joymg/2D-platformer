@@ -14,9 +14,8 @@ namespace Joymg.Platformer2D.States
         [SerializeField]private float lowJumpGravityMultiplier = 2f;
         private bool jumpPressed = false;
 
-        public override void EnterState()
+        protected override void PerformEnter()
         {
-            base.EnterState();
             _agent.animatorManager.PlayAnimation(AnimationType.Jump);
             movementData.currentVelocity = _agent.body.velocity;
             movementData.currentVelocity.y = jumpForce;
