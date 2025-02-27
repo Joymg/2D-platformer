@@ -10,7 +10,7 @@ namespace Joymg.Platformer2D.States
         {
             base.EnterState();
             _agent.animatorManager.PlayAnimation(AnimationType.Idle);
-            if (_agent.groundDetector.isGrounded)
+            if (_agent.groundDetector.isGrounded && Mathf.Abs(_agent.agentInput.MovementVector.x) <= 0f )
                 _agent.body.velocity = Vector2.zero;
         }
 

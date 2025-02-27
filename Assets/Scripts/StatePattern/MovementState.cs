@@ -18,8 +18,6 @@ namespace Joymg.Platformer2D.States
         {
             _agent.animatorManager.PlayAnimation(AnimationType.Run);
             movementData.horizontalMovementDirection = 0;
-            movementData.currentSpeed = 0f;
-            movementData.currentVelocity = Vector2.zero;
         }
 
         public override void UpdateState()
