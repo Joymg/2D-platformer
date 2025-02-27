@@ -71,7 +71,7 @@ namespace Joymg.Platformer2D.States
             movementData.currentSpeed = Mathf.Clamp(movementData.currentSpeed, 0, maxSpeed);
         }
 
-        private void SetPlayerVelocity()
+        protected void SetPlayerVelocity()
         {
             _agent.body.velocity = movementData.currentVelocity;
         }

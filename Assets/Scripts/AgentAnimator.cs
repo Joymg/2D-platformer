@@ -14,7 +14,7 @@ namespace Joymg.Platformer2D.Entities
             animator = GetComponent<Animator>();
         }
 
-        public void Play(string animationName)
+        private void Play(string animationName)
         {
             animator.Play(animationName, -1,0f);
         }
@@ -36,6 +36,7 @@ namespace Joymg.Platformer2D.Entities
                     Play("Player_Run");
                     break;
                 case AnimationType.Jump:
+                    Play("Player_Jump");
                     break;
                 case AnimationType.Fall:
                     break;
