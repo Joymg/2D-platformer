@@ -39,6 +39,7 @@ namespace Joymg.Platformer2D.Entities
                     Play("Player_Jump");
                     break;
                 case AnimationType.Fall:
+                    Play("Player_Fall");
                     break;
                 case AnimationType.Climb:
                     break;
