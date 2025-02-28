@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 20
   deceleration: 30
-  maxSpeed: 10
+  maxSpeed: 6
   jumpForce: 12
   cutJumpGravityMultiplier: 2
-  gravityMultiplier: 0.5
+  gravityMultiplier: 4
