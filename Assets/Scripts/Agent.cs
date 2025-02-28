@@ -1,4 +1,5 @@
 using System;
+using Joymg.Platformer2D.Detectors;
 using Joymg.Platformer2D.Input;
 using Joymg.Platformer2D.States;
 using UnityEngine;
@@ -14,6 +15,7 @@ namespace Joymg.Platformer2D.Entities
         [SerializeField] public AgentAnimator animatorManager;
         [SerializeField] private AgentRenderer agentRenderer;
         [SerializeField] public GroundDetector groundDetector;
+        [SerializeField] public ClimbingDetector climbingDetector;
 
         [Header("States")] 
         public State initialState;
@@ -26,6 +28,7 @@ namespace Joymg.Platformer2D.Entities
             animatorManager = GetComponentInChildren<AgentAnimator>();
             agentRenderer = GetComponentInChildren<AgentRenderer>();
             groundDetector = GetComponentInChildren<GroundDetector>();
+            climbingDetector = GetComponentInChildren<ClimbingDetector>();
 
             AgentState[] states = GetComponentsInChildren<AgentState>();
             foreach (AgentState state in states)

@@ -42,12 +42,23 @@ namespace Joymg.Platformer2D.Entities
                     Play("Player_Fall");
                     break;
                 case AnimationType.Climb:
+                    Play("Player_Climb");
                     break;
                 case AnimationType.Land:
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(animationType), animationType, null);
             }
+        }
+
+        public void StartAnimation()
+        {
+            animator.enabled = true;
+        }
+        
+        public void StopAnimation()
+        {
+            animator.enabled = false;
         }
     }
 
