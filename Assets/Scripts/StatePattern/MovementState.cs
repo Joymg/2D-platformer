@@ -7,7 +7,7 @@ namespace Joymg.Platformer2D.States
     public class MovementState : AgentState
     {
         [SerializeField] protected MovementData movementData;
-        public State IdleState;
+        public State IdleState, ClimbState;
 
         private void Awake()
         {
@@ -33,7 +33,16 @@ namespace Joymg.Platformer2D.States
                 _agent.SetState(IdleState);
             }
         }
-        
+
+        protected override void HandleMovement(Vector2 input)
+        {
+            base.HandleMovement(input);
+            if (_agent.climbingDetector.CanClimb && Mathf.Abs(input.y) > 0)
+            {
+                _agent.SetState(ClimbState);
+            }
+        }
+
         protected void CalculateVelocity()
         {
             CalculateSpeed(_agent.agentInput.MovementVector);
