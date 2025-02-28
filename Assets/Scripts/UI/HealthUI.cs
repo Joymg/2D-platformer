@@ -8,12 +8,6 @@ public class HealthUI : MonoBehaviour
     private List<HealthPointElementUI> _healthPoints;
     [SerializeField] private Sprite fullSprite, halfSprite, emptySprite;
     [SerializeField] private HealthPointElementUI healthElementPrefab;
-
-    private void Start()
-    {
-        Initialize(10);
-    }
-
     private void Initialize(int maxHealth)
     {
         _healthPoints = new();
