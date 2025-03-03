@@ -1,6 +1,7 @@
 ﻿using System;
 using Joymg.Platformer2D.Entities;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Joymg.Platformer2D.States
 {
@@ -8,6 +9,8 @@ namespace Joymg.Platformer2D.States
     {
         [SerializeField] protected MovementData movementData;
         public State IdleState, ClimbState;
+
+        public UnityEvent OnStep;
 
         private void Awake()
         {
@@ -17,6 +20,8 @@ namespace Joymg.Platformer2D.States
         protected override void PerformEnter()
         {
             _agent.animatorManager.PlayAnimation(AnimationType.Run);
+            _agent.animatorManager.OnAnimationAction.AddListener(() => OnStep?.Invoke());
+            
             movementData.horizontalMovementDirection = 0;
         }
 
@@ -32,6 +37,13 @@ namespace Joymg.Platformer2D.States
             {
                 _agent.SetState(IdleState);
             }
+        }
+
+        public override void ExitState()
+        {
+            base.ExitState();
+            //Callbacks added in Inspector will NOT be removed
+            _agent.animatorManager.ResetEvents();
         }
 
         protected override void HandleMovement(Vector2 input)

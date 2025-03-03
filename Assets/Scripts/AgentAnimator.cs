@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Joymg.Platformer2D.Entities
 {
@@ -9,9 +10,28 @@ namespace Joymg.Platformer2D.Entities
     {
         private Animator animator;
 
+        public UnityEvent OnAnimationAction;
+        public UnityEvent OnAnimationEnd;
+
         private void Awake()
         {
             animator = GetComponent<Animator>();
+        }
+
+        public void ResetEvents()
+        {
+            OnAnimationAction.RemoveAllListeners();
+            OnAnimationEnd.RemoveAllListeners();
+        }
+
+        public void InvokeAnimationAction()
+        {
+            OnAnimationAction?.Invoke();
+        }
+
+        public void InvokeAnimationEnd()
+        {
+            OnAnimationEnd?.Invoke();
         }
 
         private void Play(string animationName)
