@@ -3,6 +3,7 @@ using Joymg.Platformer2D.Detectors;
 using Joymg.Platformer2D.Input;
 using Joymg.Platformer2D.States;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Joymg.Platformer2D.Entities
 {
@@ -20,6 +21,9 @@ namespace Joymg.Platformer2D.Entities
         [Header("States")] 
         public State initialState;
         public State currentState = null, previousState = null;
+        
+        [field: SerializeField]
+        private UnityEvent OnRespawnRequired { get; set; }
 
         private void Awake()
         {
@@ -78,6 +82,11 @@ namespace Joymg.Platformer2D.Entities
         private void DisplayState()
         {
             Debug.Log($"Agent: {gameObject.name} now in {currentState.GetType()}");
+        }
+
+        public void Die()
+        {
+            OnRespawnRequired?.Invoke();
         }
     }
 }
