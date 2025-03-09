@@ -26,8 +26,6 @@ namespace Joymg.Platformer2D.Input
 
             GetMenuInput();
         }
-
-        
         
         private void GetMovementInput()
         {

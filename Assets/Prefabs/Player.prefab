@@ -1296,9 +1296,13 @@ MonoBehaviour:
       m_Calls: []
   JumpState: {fileID: 0}
   FallState: {fileID: 4210819946947312853}
+  AttackState: {fileID: 0}
   movementData: {fileID: 0}
   IdleState: {fileID: 1651715955410557126}
   ClimbState: {fileID: 1602618652120220393}
+  OnStep:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &4210819946947312853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1319,9 +1323,13 @@ MonoBehaviour:
       m_Calls: []
   JumpState: {fileID: 1837513887129869016}
   FallState: {fileID: 0}
+  AttackState: {fileID: 0}
   movementData: {fileID: 0}
   IdleState: {fileID: 1651715955410557126}
   ClimbState: {fileID: 1602618652120220393}
+  OnStep:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1602618652120220393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1342,4 +1350,5 @@ MonoBehaviour:
       m_Calls: []
   JumpState: {fileID: 1837513887129869016}
   FallState: {fileID: 4210819946947312853}
+  AttackState: {fileID: 0}
   IdleState: {fileID: 1651715955410557126}

@@ -21,6 +21,10 @@ namespace Joymg.Platformer2D.States
         {
             _agent.SetState(JumpState);
         }
+        protected override void HandleAttack()
+        {
+            //prevent attack
+        }
 
         public override void UpdateState()
         {

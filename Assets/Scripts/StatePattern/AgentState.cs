@@ -7,7 +7,7 @@ namespace Joymg.Platformer2D.States
     {
         protected Agent _agent;
         [SerializeField]
-        protected AgentState JumpState, FallState;
+        protected AgentState JumpState, FallState, AttackState;
 
         public void InitializeState(Agent agent)
         {
@@ -62,6 +62,12 @@ namespace Joymg.Platformer2D.States
 
         protected virtual void HandleJumpReleased(){ }
 
-        protected virtual void HandleAttack(){ }
+        protected virtual void HandleAttack()
+        {
+            if (_agent.weaponManager.CanWeaponBeUsed(_agent.groundDetector.isGrounded))
+            {
+                _agent.SetState(AttackState);
+            }
+        }
     }
 }

@@ -51,6 +51,7 @@ namespace Joymg.Platformer2D.Entities
                     Play("Player_Idle");
                     break;
                 case AnimationType.Attack:
+                    Play("Player_Attack");
                     break;
                 case AnimationType.Run:
                     Play("Player_Run");

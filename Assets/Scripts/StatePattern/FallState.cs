@@ -34,5 +34,6 @@ namespace Joymg.Platformer2D.States
             movementData.currentVelocity.y += Physics2D.gravity.y * _agent.data.gravityMultiplier * Time.deltaTime;
             _agent.body.velocity = movementData.currentVelocity;
         }
+
     }
 }

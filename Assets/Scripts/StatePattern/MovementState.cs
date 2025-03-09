@@ -94,7 +94,5 @@ namespace Joymg.Platformer2D.States
         {
             _agent.body.velocity = movementData.currentVelocity;
         }
-
-        
     }
 }

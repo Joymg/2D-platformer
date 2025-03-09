@@ -47,6 +47,9 @@ TagManager:
   - name: Details
     uniqueID: 158672107
     locked: 0
+  - name: Obstacles
+    uniqueID: 1093973815
+    locked: 0
   - name: Foreground
     uniqueID: 692324851
     locked: 0
