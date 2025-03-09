@@ -18,7 +18,7 @@ public class AudioFeedback : MonoBehaviour
 
     public void PlayClip(AudioClip clipToPlay = null)
     {
-        if (clipToPlay)
+        if (!clipToPlay)
             clipToPlay = clip;
         if (!clipToPlay)
             return;
