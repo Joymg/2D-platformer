@@ -2,6 +2,7 @@ using System;
 using Joymg.Platformer2D.Detectors;
 using Joymg.Platformer2D.Input;
 using Joymg.Platformer2D.States;
+using Joymg.Platformer2D.WeaponSystem;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -18,12 +19,16 @@ namespace Joymg.Platformer2D.Entities
         [SerializeField] public GroundDetector groundDetector;
         [SerializeField] public ClimbingDetector climbingDetector;
 
+        [SerializeField] public AgentWeaponManager weaponManager;
+
         [Header("States")] 
         public State initialState;
         public State currentState = null, previousState = null;
         
         [field: SerializeField]
         private UnityEvent OnRespawnRequired { get; set; }
+
+        [Header("Debug")] public WeaponData initialWeaponData;
 
         private void Awake()
         {
@@ -33,6 +38,7 @@ namespace Joymg.Platformer2D.Entities
             agentRenderer = GetComponentInChildren<AgentRenderer>();
             groundDetector = GetComponentInChildren<GroundDetector>();
             climbingDetector = GetComponentInChildren<ClimbingDetector>();
+            weaponManager = GetComponentInChildren<AgentWeaponManager>();
 
             AgentState[] states = GetComponentsInChildren<AgentState>();
             foreach (AgentState state in states)
@@ -45,6 +51,7 @@ namespace Joymg.Platformer2D.Entities
         {
             agentInput.OnMovement += agentRenderer.FaceDirection;
             SetState(initialState);
+            weaponManager.PickUpWeapon(initialWeaponData);
         }
 
         private void Update()
