@@ -5,7 +5,9 @@ namespace Joymg.Platformer2D.States
 {
     public abstract class State : MonoBehaviour
     {
-        public UnityEvent OnEnter, OnExit;
+        [Header("State Events")] 
+        public UnityEvent OnEnter;
+        public UnityEvent OnExit;
 
         public abstract void EnterState();
         public abstract void UpdateState();

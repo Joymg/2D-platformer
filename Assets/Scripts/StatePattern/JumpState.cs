@@ -6,11 +6,11 @@ namespace Joymg.Platformer2D.States
 {
     public class JumpState: MovementState
     {
-
         private bool jumpPressed = false;
 
         protected override void PerformEnter()
         {
+            base.PerformEnter();
             _agent.animatorManager.PlayAnimation(AnimationType.Jump);
             movementData.currentVelocity = _agent.body.velocity;
             movementData.currentVelocity.y = _agent.data.jumpForce;
@@ -25,7 +25,7 @@ namespace Joymg.Platformer2D.States
             SetPlayerVelocity();
 
             if (_agent.body.velocity.y <= 0f)
-                _agent.SetState(FallState);
+                _agent.SetState(_agent.StateFactory.GetState(StateType.Fall));
         }
 
         private void ControlJumpHeight()

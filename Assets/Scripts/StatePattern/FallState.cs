@@ -7,6 +7,7 @@ namespace Joymg.Platformer2D.States
     {
         protected override void PerformEnter()
         {
+            base.PerformEnter();
             _agent.animatorManager.PlayAnimation(AnimationType.Fall);
         }
         
@@ -17,7 +18,7 @@ namespace Joymg.Platformer2D.States
             SetPlayerVelocity();
             
             if (_agent.groundDetector.isGrounded)
-                _agent.SetState(IdleState);
+                _agent.SetState(_agent.StateFactory.GetState(StateType.Idle));
         }
         
         protected override void HandleJumpPressed()

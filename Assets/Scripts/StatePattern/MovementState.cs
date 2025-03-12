@@ -7,8 +7,8 @@ namespace Joymg.Platformer2D.States
 {
     public class MovementState : AgentState
     {
+        [Header("Movement State")]
         [SerializeField] protected MovementData movementData;
-        public State IdleState, ClimbState;
 
         public UnityEvent OnStep;
 
@@ -19,6 +19,7 @@ namespace Joymg.Platformer2D.States
 
         protected override void PerformEnter()
         {
+            base.PerformEnter();
             _agent.animatorManager.PlayAnimation(AnimationType.Run);
             _agent.animatorManager.OnAnimationAction.AddListener(() => OnStep?.Invoke());
             
@@ -35,7 +36,7 @@ namespace Joymg.Platformer2D.States
             
             if (Mathf.Abs(_agent.body.velocity.x) < 0.01f)
             {
-                _agent.SetState(IdleState);
+                _agent.SetState(_agent.StateFactory.GetState(StateType.Idle));
             }
         }
 
@@ -51,7 +52,7 @@ namespace Joymg.Platformer2D.States
             base.HandleMovement(input);
             if (_agent.climbingDetector.CanClimb && Mathf.Abs(input.y) > 0)
             {
-                _agent.SetState(ClimbState);
+                _agent.SetState(_agent.StateFactory.GetState(StateType.Climb));
             }
         }
 

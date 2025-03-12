@@ -7,8 +7,8 @@ namespace Joymg.Platformer2D.States
 {
     public class AttackState : AgentState
     {
+        [Header("Attack State")]
         [SerializeField]
-        protected State IdleState;
         public LayerMask hittableLayerMask;
 
         protected Vector2 direction;
@@ -16,8 +16,9 @@ namespace Joymg.Platformer2D.States
         public UnityEvent<AudioClip> OnWeaponPlay;
         [SerializeField] private bool showGizmos;
 
-        public override void EnterState()
+        protected override void PerformEnter()
         {
+            base.PerformEnter();
             _agent.animatorManager.ResetEvents();
             _agent.animatorManager.PlayAnimation(AnimationType.Attack);
             _agent.animatorManager.OnAnimationEnd.AddListener(HandleTransition);
@@ -32,7 +33,7 @@ namespace Joymg.Platformer2D.States
         private void HandleTransition()
         {
             _agent.animatorManager.OnAnimationAction.RemoveListener(PerformAttack);
-            _agent.SetState(_agent.groundDetector.isGrounded ? IdleState : FallState);
+            _agent.SetState(_agent.groundDetector.isGrounded ? _agent.StateFactory.GetState(StateType.Idle) : _agent.StateFactory.GetState(StateType.Fall));
         }
 
         public override void UpdateState()
@@ -73,6 +74,8 @@ namespace Joymg.Platformer2D.States
         
         public override void ExitState()
         {
+            //In case we got hit in the middle of the attack not to trigger a state transition
+            _agent.animatorManager.ResetEvents();
             _agent.weaponManager.SetWeaponVisibility(false);
         }
 

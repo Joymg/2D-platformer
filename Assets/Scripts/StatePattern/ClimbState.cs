@@ -5,11 +5,11 @@ namespace Joymg.Platformer2D.States
 {
     public class ClimbState : AgentState
     {
-        [SerializeField] private AgentState IdleState;
         private float previousGravityScale = 0f;
 
-        public override void EnterState()
+        protected override void PerformEnter()
         {
+            base.PerformEnter();
             _agent.animatorManager.PlayAnimation(AnimationType.Climb);
             _agent.animatorManager.StopAnimation();
             previousGravityScale = _agent.body.gravityScale;
@@ -19,7 +19,7 @@ namespace Joymg.Platformer2D.States
 
         protected override void HandleJumpPressed()
         {
-            _agent.SetState(JumpState);
+            _agent.SetState(_agent.StateFactory.GetState(StateType.Jump));
         }
         protected override void HandleAttack()
         {
@@ -41,7 +41,7 @@ namespace Joymg.Platformer2D.States
             }
 
             if (!_agent.climbingDetector.CanClimb)
-                _agent.SetState(IdleState);
+                _agent.SetState(_agent.StateFactory.GetState(StateType.Idle));
         }
 
         public override void ExitState()

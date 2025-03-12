@@ -3,12 +3,9 @@ using UnityEngine;
 
 namespace Joymg.Platformer2D.States
 {
-    public class AgentState : State
+    public abstract class AgentState : State
     {
         protected Agent _agent;
-        [SerializeField]
-        protected AgentState JumpState, FallState, AttackState;
-
         public void InitializeState(Agent agent)
         {
             _agent = agent;
@@ -21,10 +18,15 @@ namespace Joymg.Platformer2D.States
             _agent.agentInput.OnJumpReleased += HandleJumpReleased;
             _agent.agentInput.OnAttack += HandleAttack;
             OnEnter?.Invoke();
+            Debug.Log($"Entering Agent state");
+            
             PerformEnter();
         }
 
-        protected virtual void  PerformEnter() { }
+        protected virtual void PerformEnter()
+        {
+            Debug.Log($"Performing enter state {GetType().Name}");
+        }
         
         public override void UpdateState() { }
 
@@ -32,7 +34,7 @@ namespace Joymg.Platformer2D.States
         {
             if (_agent.groundDetector.isGrounded) return false;
             
-            _agent.SetState(FallState);
+            _agent.SetState(_agent.StateFactory.GetState(StateType.Fall));
             return true;
 
         }
@@ -56,7 +58,7 @@ namespace Joymg.Platformer2D.States
         {
             if (_agent.groundDetector.isGrounded)
             {
-                _agent.SetState(JumpState);   
+                _agent.SetState(_agent.StateFactory.GetState(StateType.Jump));   
             }
         }
 
@@ -66,8 +68,20 @@ namespace Joymg.Platformer2D.States
         {
             if (_agent.weaponManager.CanWeaponBeUsed(_agent.groundDetector.isGrounded))
             {
-                _agent.SetState(AttackState);
+                _agent.SetState(_agent.StateFactory.GetState(StateType.Attack));
             }
         }
+
+        public virtual void GetHit()
+        {
+            _agent.SetState(_agent.StateFactory.GetState(StateType.Hit));
+        }
+
+        public virtual void Die()
+        {
+            _agent.SetState(_agent.StateFactory.GetState(StateType.Dead));
+        }
+        
+        
     }
 }
