@@ -44,8 +44,10 @@ namespace Joymg.Platformer2D.Entities
             switch (animationType)
             {
                 case AnimationType.Dead:
+                    Play("Player_Die");
                     break;
                 case AnimationType.Hit:
+                    Play("Player_Hit");
                     break;
                 case AnimationType.Idle:
                     Play("Player_Idle");
