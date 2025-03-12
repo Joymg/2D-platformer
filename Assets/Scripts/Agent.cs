@@ -3,8 +3,10 @@ using Joymg.Platformer2D.Detectors;
 using Joymg.Platformer2D.Input;
 using Joymg.Platformer2D.States;
 using Joymg.Platformer2D.WeaponSystem;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace Joymg.Platformer2D.Entities
 {
@@ -18,15 +20,19 @@ namespace Joymg.Platformer2D.Entities
         [SerializeField] private AgentRenderer agentRenderer;
         [SerializeField] public GroundDetector groundDetector;
         [SerializeField] public ClimbingDetector climbingDetector;
+        [SerializeField] public Damageable damageable;
 
         [SerializeField] public AgentWeaponManager weaponManager;
 
+
         [Header("States")] 
+        public StateFactory StateFactory;
         public State initialState;
         public State currentState = null, previousState = null;
-        
-        [field: SerializeField]
-        private UnityEvent OnRespawnRequired { get; set; }
+
+        [Header("Events")] 
+        [SerializeField] public UnityEvent OnDead;
+        [field: SerializeField] private UnityEvent OnRespawnRequired { get; set; }
 
         [Header("Debug")] public WeaponData initialWeaponData;
 
@@ -39,19 +45,24 @@ namespace Joymg.Platformer2D.Entities
             groundDetector = GetComponentInChildren<GroundDetector>();
             climbingDetector = GetComponentInChildren<ClimbingDetector>();
             weaponManager = GetComponentInChildren<AgentWeaponManager>();
+            StateFactory = GetComponentInChildren<StateFactory>();
+            damageable = GetComponent<Damageable>();
 
-            AgentState[] states = GetComponentsInChildren<AgentState>();
-            foreach (AgentState state in states)
-            {
-                state.InitializeState(this);
-            }
+            StateFactory.InitializeStates(this);
         }
 
         private void Start()
         {
             agentInput.OnMovement += agentRenderer.FaceDirection;
+            Initialize();
+        }
+
+        private void Initialize()
+        {
             SetState(initialState);
             weaponManager.PickUpWeapon(initialWeaponData);
+            damageable.Initialize(data.health);
+            
         }
 
         private void Update()
@@ -83,7 +94,7 @@ namespace Joymg.Platformer2D.Entities
             currentState = newState;
             currentState.EnterState();
 
-            DisplayState();
+            //DisplayState();
         }
 
         private void DisplayState()
@@ -91,9 +102,21 @@ namespace Joymg.Platformer2D.Entities
             Debug.Log($"Agent: {gameObject.name} now in {currentState.GetType()}");
         }
 
+        public void GetHit()
+        {
+            ((AgentState)currentState).GetHit();
+        }
+        
         public void Die()
         {
-            OnRespawnRequired?.Invoke();
+            if (damageable.CurrentHealth > 0)
+            {
+                OnRespawnRequired?.Invoke();
+            }
+            else
+            {
+                ((AgentState)currentState).Die();
+            }
         }
     }
 }

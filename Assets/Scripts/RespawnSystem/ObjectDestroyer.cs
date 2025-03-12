@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Joymg.Platformer2D.Entities;
 using UnityEngine;
 
@@ -23,7 +20,11 @@ namespace Joymg.Platformer2D.RespawnSystem
                 {
                     Destroy(agent.gameObject);
                 }
-
+                agent.damageable.GetHit(null,1);
+                if (agent.damageable.CurrentHealth == 0 && agent.gameObject.layer == LayerMask.NameToLayer("Player"))
+                {
+                    agent.GetComponent<RespawnHelper>().RespawnAgent();
+                }
                 agent.Die();
             }
         }
