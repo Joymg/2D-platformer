@@ -1172,6 +1172,62 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8066585589100460073, guid: a918fc610c23a3940a75f1acfb5a32bf, type: 3}
+      propertyPath: OnHealthValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066585589100460073, guid: a918fc610c23a3940a75f1acfb5a32bf, type: 3}
+      propertyPath: OnInitializeMaxHealth.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066585589100460073, guid: a918fc610c23a3940a75f1acfb5a32bf, type: 3}
+      propertyPath: OnHealthValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066585589100460073, guid: a918fc610c23a3940a75f1acfb5a32bf, type: 3}
+      propertyPath: OnInitializeMaxHealth.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066585589100460073, guid: a918fc610c23a3940a75f1acfb5a32bf, type: 3}
+      propertyPath: OnHealthValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3275284734748463846}
+    - target: {fileID: 8066585589100460073, guid: a918fc610c23a3940a75f1acfb5a32bf, type: 3}
+      propertyPath: OnInitializeMaxHealth.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3275284734748463846}
+    - target: {fileID: 8066585589100460073, guid: a918fc610c23a3940a75f1acfb5a32bf, type: 3}
+      propertyPath: OnHealthValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066585589100460073, guid: a918fc610c23a3940a75f1acfb5a32bf, type: 3}
+      propertyPath: OnHealthValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetHealth
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066585589100460073, guid: a918fc610c23a3940a75f1acfb5a32bf, type: 3}
+      propertyPath: OnInitializeMaxHealth.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066585589100460073, guid: a918fc610c23a3940a75f1acfb5a32bf, type: 3}
+      propertyPath: OnInitializeMaxHealth.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: InitializeMaxHealth
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066585589100460073, guid: a918fc610c23a3940a75f1acfb5a32bf, type: 3}
+      propertyPath: OnHealthValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Joymg.Platformer2D.UI.PlayerUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066585589100460073, guid: a918fc610c23a3940a75f1acfb5a32bf, type: 3}
+      propertyPath: OnInitializeMaxHealth.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Joymg.Platformer2D.UI.PlayerUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066585589100460073, guid: a918fc610c23a3940a75f1acfb5a32bf, type: 3}
+      propertyPath: OnHealthValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066585589100460073, guid: a918fc610c23a3940a75f1acfb5a32bf, type: 3}
+      propertyPath: OnInitializeMaxHealth.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8068164361129349337, guid: a918fc610c23a3940a75f1acfb5a32bf, type: 3}
       propertyPath: maxSpeed
       value: 10
@@ -1239,17 +1295,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7152116109757472415, guid: a918fc610c23a3940a75f1acfb5a32bf, type: 3}
   m_PrefabInstance: {fileID: 8028089961325100271}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1651715955410557126 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8756567366059303977, guid: a918fc610c23a3940a75f1acfb5a32bf, type: 3}
-  m_PrefabInstance: {fileID: 8028089961325100271}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5069644040253267877}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 420abc2c2e034db49cb46992765c2cae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4245587937496684558 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6161727986745025761, guid: a918fc610c23a3940a75f1acfb5a32bf, type: 3}
@@ -1294,12 +1339,7 @@ MonoBehaviour:
   OnExit:
     m_PersistentCalls:
       m_Calls: []
-  JumpState: {fileID: 0}
-  FallState: {fileID: 4210819946947312853}
-  AttackState: {fileID: 0}
   movementData: {fileID: 0}
-  IdleState: {fileID: 1651715955410557126}
-  ClimbState: {fileID: 1602618652120220393}
   OnStep:
     m_PersistentCalls:
       m_Calls: []
@@ -1321,12 +1361,7 @@ MonoBehaviour:
   OnExit:
     m_PersistentCalls:
       m_Calls: []
-  JumpState: {fileID: 1837513887129869016}
-  FallState: {fileID: 0}
-  AttackState: {fileID: 0}
   movementData: {fileID: 0}
-  IdleState: {fileID: 1651715955410557126}
-  ClimbState: {fileID: 1602618652120220393}
   OnStep:
     m_PersistentCalls:
       m_Calls: []
@@ -1348,7 +1383,3 @@ MonoBehaviour:
   OnExit:
     m_PersistentCalls:
       m_Calls: []
-  JumpState: {fileID: 1837513887129869016}
-  FallState: {fileID: 4210819946947312853}
-  AttackState: {fileID: 0}
-  IdleState: {fileID: 1651715955410557126}
