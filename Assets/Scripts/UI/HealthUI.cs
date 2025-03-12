@@ -8,6 +8,7 @@ public class HealthUI : MonoBehaviour
     private List<HealthPointElementUI> _healthPoints;
     [SerializeField] private Sprite fullSprite, halfSprite, emptySprite;
     [SerializeField] private HealthPointElementUI healthElementPrefab;
+
     public void Initialize(int maxHealth)
     {
         _healthPoints = new();
@@ -16,7 +17,7 @@ public class HealthUI : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        for (int i = 0; i < maxHealth/2; i++)
+        for (int i = 0; i < maxHealth / 2; i++)
         {
             HealthPointElementUI life = Instantiate(healthElementPrefab, transform, false);
             _healthPoints.Add(life);
@@ -29,7 +30,11 @@ public class HealthUI : MonoBehaviour
         {
             if (i * 2 < currentHealth)
             {
-                _healthPoints[i].SetSprite(currentHealth % 2 == 0 ? halfSprite : fullSprite);
+                if (currentHealth - i * 2 == 1)
+                    _healthPoints[i].SetSprite(halfSprite);
+
+                else
+                    _healthPoints[i].SetSprite(fullSprite);
             }
             else
             {
