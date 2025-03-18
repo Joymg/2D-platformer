@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a5a0434fc9271de49a906e786b510485, type: 3}
-  m_Name: PlayerAgentData
+  m_Name: BasicEnemyData
   m_EditorClassIdentifier: 
-  health: 10
+  health: 2
   acceleration: 20
   deceleration: 30
-  maxSpeed: 8
+  maxSpeed: 3
   jumpForce: 12
   defaultGravity: 2
   cutJumpGravityMultiplier: 2
