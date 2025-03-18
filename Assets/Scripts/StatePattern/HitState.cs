@@ -39,5 +39,11 @@ namespace Joymg.Platformer2D.States
             _agent.animatorManager.OnAnimationEnd.RemoveListener(Recover);
             _agent.SetState(_agent.StateFactory.GetState(StateType.Idle));
         }
+
+        public override void ExitState()
+        {
+            base.ExitState();
+            _agent.animatorManager.ResetEvents();
+        }
     }
 }
