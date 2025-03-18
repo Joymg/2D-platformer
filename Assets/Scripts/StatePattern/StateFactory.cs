@@ -20,27 +20,23 @@ namespace Joymg.Platformer2D.States
     public class StateFactory : MonoBehaviour
     {
         [SerializeField] private State Idle, Move, Jump, Fall, Climb, Attack, Hit, Dead;
-        private Dictionary<StateType, State> stateDictionary;
-        public State GetState(StateType stateType) => stateDictionary[stateType];
 
-        private void Awake()
+        public State GetState(StateType stateType) => stateType switch
         {
-            stateDictionary = new()
-            {
-                { StateType.Idle, Idle },
-                { StateType.Move, Move },
-                { StateType.Jump, Jump },
-                { StateType.Fall, Fall },
-                { StateType.Climb, Climb },
-                { StateType.Attack, Attack },
-                { StateType.Hit, Hit },
-                { StateType.Dead, Dead },
-            };
-        }
+            StateType.Idle => Idle,
+            StateType.Move => Move,
+            StateType.Jump => Jump,
+            StateType.Fall => Fall,
+            StateType.Climb => Climb,
+            StateType.Attack => Attack,
+            StateType.Hit => Hit,
+            StateType.Dead => Dead,
+            _ => throw new ArgumentOutOfRangeException(nameof(stateType), stateType, null)
+        };
 
         public void InitializeStates(Agent agent)
         {
-            foreach (State state in stateDictionary.Values)
+            foreach (AgentState state in GetComponents<AgentState>())
             {
                 AgentState agentState = (AgentState)state;
                 agentState.InitializeState(agent);
