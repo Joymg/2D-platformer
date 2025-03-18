@@ -1084,6 +1084,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -1012217094, guid: bd50ca5911c8a354c99c1f884f6c2717, type: 3}
+    - target: {fileID: 5394201899308379829, guid: a918fc610c23a3940a75f1acfb5a32bf, type: 3}
+      propertyPath: m_SortingLayer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5394201899308379829, guid: a918fc610c23a3940a75f1acfb5a32bf, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1450043631
+      objectReference: {fileID: 0}
     - target: {fileID: 6161727986745025761, guid: a918fc610c23a3940a75f1acfb5a32bf, type: 3}
       propertyPath: m_Name
       value: Detectors
