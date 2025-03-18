@@ -15,7 +15,7 @@ namespace Joymg.Platformer2D.Entities
         [SerializeField] public AgentData_SO data;
         
         [SerializeField] public Rigidbody2D body;
-        [SerializeField] public PlayerInput agentInput;
+        [SerializeField] public IAgentInput agentInput;
         [SerializeField] public AgentAnimator animatorManager;
         [SerializeField] private AgentRenderer agentRenderer;
         [SerializeField] public GroundDetector groundDetector;
@@ -38,7 +38,7 @@ namespace Joymg.Platformer2D.Entities
 
         private void Awake()
         {
-            agentInput = GetComponentInParent<PlayerInput>();
+            agentInput = GetComponentInParent<IAgentInput>();
             body = GetComponent<Rigidbody2D>();
             animatorManager = GetComponentInChildren<AgentAnimator>();
             agentRenderer = GetComponentInChildren<AgentRenderer>();

@@ -4,12 +4,15 @@ using UnityEngine.Events;
 
 namespace Joymg.Platformer2D.Input
 {
-    public class PlayerInput : MonoBehaviour
+    public class PlayerInput : MonoBehaviour, IAgentInput
     {
         [field: SerializeField]
         public Vector2 MovementVector { get; private set; }
 
-        public event Action OnAttack, OnJumpPressed, OnJumpReleased, OnToolChanged;
+        public event Action OnAttack;
+        public event Action OnJumpPressed;
+        public event Action OnJumpReleased;
+        public event Action OnToolChanged;
         public event Action<Vector2> OnMovement;
         public KeyCode jumpKey, attackKey, menuKey;
         public UnityEvent OnMenuKeyPressed;
