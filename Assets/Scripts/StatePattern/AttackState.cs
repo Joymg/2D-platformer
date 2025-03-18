@@ -38,7 +38,7 @@ namespace Joymg.Platformer2D.States
 
         public override void UpdateState()
         {
-            _agent.weaponManager.GetCurrentWeapon().PerformAttack(_agent, hittableLayerMask, direction);
+            //
         }
 
         public override void FixedUpdateState()
@@ -68,6 +68,7 @@ namespace Joymg.Platformer2D.States
         private void PerformAttack()
         {
             OnWeaponPlay?.Invoke(_agent.weaponManager.GetCurrentWeapon().sfx);
+            _agent.weaponManager.GetCurrentWeapon().PerformAttack(_agent, hittableLayerMask, direction);
             _agent.animatorManager.OnAnimationAction.RemoveListener(PerformAttack);
             
         }
