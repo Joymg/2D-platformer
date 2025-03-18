@@ -13,8 +13,6 @@ namespace Joymg.Platformer2D.States
             base.PerformEnter();
             _agent.animatorManager.PlayAnimation(AnimationType.Dead);
             _agent.animatorManager.OnAnimationEnd.AddListener(WaitBeforeDie);
-            _agent.body.isKinematic = true;
-            _agent.agentInput.enabled = false;
         }
 
         protected override void HandleJumpPressed()
@@ -58,9 +56,7 @@ namespace Joymg.Platformer2D.States
         {
             base.ExitState();
             StopAllCoroutines();
-            _agent.animatorManager.ResetEvents();
-            _agent.body.isKinematic = false;
-            _agent.agentInput.enabled = true                  ;
+            _agent.animatorManager.ResetEvents();  ;
         }
     }
 }
