@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace Joymg.Platformer2D.WeaponSystem
 {
+    [Serializable]
     public class WeaponStorage
     {
         private List<WeaponData> _weaponList = new();

@@ -9,7 +9,7 @@ namespace Joymg.Platformer2D.WeaponSystem
     public class AgentWeaponManager : MonoBehaviour
     {
         public SpriteRenderer weaponSprite;
-        private WeaponStorage _storage;
+        [SerializeField] private WeaponStorage _storage;
 
         public UnityEvent<Sprite> OnWeaponSwap;
         public UnityEvent OnMultipleWeapon;
