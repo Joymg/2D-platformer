@@ -172,8 +172,20 @@ MonoBehaviour:
     m_Bits: 16896
   OnWeaponPlay:
     m_PersistentCalls:
-      m_Calls: []
-  showGizmos: 0
+      m_Calls:
+      - m_Target: {fileID: 5423480730386264472}
+        m_TargetAssemblyTypeName: AudioFeedback, Assembly-CSharp
+        m_MethodName: PlayClip
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  showGizmos: 1
 --- !u!114 &4369050929374281400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,7 +200,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnEnter:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5129158452068482076}
+        m_TargetAssemblyTypeName: AudioFeedback, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7115780627003051455}
+        m_TargetAssemblyTypeName: Joymg.Platformer2D.Feedback.FlashWhiteFeedback,
+          Assembly-CSharp
+        m_MethodName: PlayFeedback
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnExit:
     m_PersistentCalls:
       m_Calls: []
@@ -206,7 +243,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnEnter:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8972489278624941295}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnExit:
     m_PersistentCalls:
       m_Calls: []
@@ -328,6 +377,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3783787240695551179}
   - component: {fileID: 5129158452068482076}
+  - component: {fileID: 7115780627003051455}
   m_Layer: 0
   m_Name: HitFeedback
   m_TagString: Untagged
@@ -365,6 +415,20 @@ MonoBehaviour:
   clip: {fileID: 8300000, guid: 3f457333866ddb645b39acb6c59f6c86, type: 3}
   targetAudioSource: {fileID: 2653662480387141875}
   volume: 0.347
+--- !u!114 &7115780627003051455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4303724254877881490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 826da3bf600626844acd0fdf9d39f8d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 5394201899308379829}
+  feedbackTime: 0.1
 --- !u!1 &6141990838151019813
 GameObject:
   m_ObjectHideFlags: 0
@@ -848,6 +912,8 @@ GameObject:
   - component: {fileID: 2006725513262834182}
   - component: {fileID: 1030965157693924500}
   - component: {fileID: 8066585589100460073}
+  - component: {fileID: 5078850384181862697}
+  - component: {fileID: 5229253030813452893}
   m_Layer: 0
   m_Name: Base Agent
   m_TagString: Untagged
@@ -1023,18 +1089,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: AudioFeedback, Assembly-CSharp
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   OnDie:
     m_PersistentCalls:
       m_Calls:
@@ -1050,10 +1104,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: AudioFeedback, Assembly-CSharp
-        m_MethodName: Play
+      - m_Target: {fileID: 5229253030813452893}
+        m_TargetAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
+        m_MethodName: StopAllCoroutines
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5229253030813452893}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1071,3 +1137,34 @@ MonoBehaviour:
   OnInitializeMaxHealth:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5078850384181862697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8040284236505875095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaa67eecae364659885c38af75698a7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  body: {fileID: 1996155267193398008}
+  force: 10
+--- !u!114 &5229253030813452893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8040284236505875095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe0828d28f1047bda1b4bcfe61159c33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colliders: []
+  duration: 0.8
+  spriteRenderer: {fileID: 5394201899308379829}
+  flashDelay: 0.1
+  flashAlpha: 0.5
