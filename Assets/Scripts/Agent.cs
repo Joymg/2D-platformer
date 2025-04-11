@@ -59,7 +59,15 @@ namespace Joymg.Platformer2D.Entities
         {
             SetState(initialState);
             damageable.Initialize(data.health);
-            
+
+            agentInput.OnToolChanged += SwapWeapon;
+        }
+
+        private void SwapWeapon()
+        {
+            if (!weaponManager )
+                return;
+            weaponManager.SwapWeapon();
         }
 
         private void Update()
@@ -72,8 +80,6 @@ namespace Joymg.Platformer2D.Entities
             groundDetector.CheckIsGrounded();
             currentState.FixedUpdateState();
         }
-
-
         private void HandleJump()
         {
             throw new NotImplementedException();
@@ -104,6 +110,15 @@ namespace Joymg.Platformer2D.Entities
             ((AgentState)currentState).GetHit();
         }
         
+        
+        public void PickUp(WeaponData weaponData)
+        {
+            if (!weaponManager)
+                return;
+            
+            weaponManager.PickUpWeapon(weaponData);
+        }
+        
         public void Die()
         {
             if (damageable.CurrentHealth > 0)
@@ -115,5 +130,6 @@ namespace Joymg.Platformer2D.Entities
                 ((AgentState)currentState).Die();
             }
         }
+
     }
 }
