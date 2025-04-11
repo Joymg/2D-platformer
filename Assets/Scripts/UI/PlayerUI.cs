@@ -9,11 +9,13 @@ namespace Joymg.Platformer2D.UI
     {
         private HealthUI _healthUI;
         private ScoreUI _scoreUI;
+        private WeaponUI _weaponUI;
 
         private void Awake()
         {
             _healthUI = GetComponentInChildren<HealthUI>();
             _scoreUI = GetComponentInChildren<ScoreUI>();
+            _weaponUI = GetComponentInChildren<WeaponUI>();
         }
 
         public void InitializeMaxHealth(int maxHealth)
@@ -29,6 +31,11 @@ namespace Joymg.Platformer2D.UI
         public void SetPoints(int currentPoints)
         {
             _scoreUI.SetScore(currentPoints);
+        }
+
+        public void SetWeapon(Sprite sprite)
+        {
+            _weaponUI.SetSprite(sprite);
         }
     }
 }
