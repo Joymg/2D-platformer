@@ -34,8 +34,6 @@ namespace Joymg.Platformer2D.Entities
         [SerializeField] public UnityEvent OnDead;
         [field: SerializeField] private UnityEvent OnRespawnRequired { get; set; }
 
-        [Header("Debug")] public WeaponData initialWeaponData;
-
         private void Awake()
         {
             agentInput = GetComponentInParent<IAgentInput>();
@@ -60,7 +58,6 @@ namespace Joymg.Platformer2D.Entities
         private void Initialize()
         {
             SetState(initialState);
-            weaponManager.PickUpWeapon(initialWeaponData);
             damageable.Initialize(data.health);
             
         }
