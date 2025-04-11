@@ -89,7 +89,7 @@ namespace Joymg.Platformer2D.States
                 return;
             Gizmos.color = Color.red;
             Vector3 position = _agent.weaponManager.transform.position;
-            _agent.weaponManager.GetCurrentWeapon().DrawWeaponGizmo(position, direction);
+            _agent.weaponManager.GetCurrentWeapon()?.DrawWeaponGizmo(position, direction);
         }
     }
 }
