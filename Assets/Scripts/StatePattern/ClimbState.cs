@@ -21,6 +21,7 @@ namespace Joymg.Platformer2D.States
         {
             _agent.SetState(_agent.StateFactory.GetState(StateType.Jump));
         }
+
         protected override void HandleAttack()
         {
             //prevent attack
@@ -46,6 +47,7 @@ namespace Joymg.Platformer2D.States
 
         public override void ExitState()
         {
+            base.ExitState();
             _agent.animatorManager.StartAnimation();
             _agent.body.gravityScale = previousGravityScale;
         }
