@@ -7,8 +7,8 @@ namespace Joymg.Platformer2D.States
 {
     public class MovementState : AgentState
     {
-        [Header("Movement State")]
-        [SerializeField] protected MovementData movementData;
+        [Header("Movement State")] [SerializeField]
+        protected MovementData movementData;
 
         public UnityEvent OnStep;
 
@@ -22,7 +22,7 @@ namespace Joymg.Platformer2D.States
             base.PerformEnter();
             _agent.animatorManager.PlayAnimation(AnimationType.Run);
             _agent.animatorManager.OnAnimationAction.AddListener(() => OnStep?.Invoke());
-            
+
             movementData.horizontalMovementDirection = 0;
         }
 
@@ -30,10 +30,10 @@ namespace Joymg.Platformer2D.States
         {
             if (IsFalling())
                 return;
-            
+
             CalculateVelocity();
             SetPlayerVelocity();
-            
+
             if (Mathf.Abs(_agent.body.velocity.x) < 0.01f)
             {
                 _agent.SetState(_agent.StateFactory.GetState(StateType.Idle));
@@ -50,7 +50,7 @@ namespace Joymg.Platformer2D.States
         protected override void HandleMovement(Vector2 input)
         {
             base.HandleMovement(input);
-            if (_agent.climbingDetector.CanClimb && Mathf.Abs(input.y) > 0)
+            if (_agent.climbingDetector && _agent.climbingDetector.CanClimb && Mathf.Abs(input.y) > 0)
             {
                 _agent.SetState(_agent.StateFactory.GetState(StateType.Climb));
             }
@@ -60,9 +60,9 @@ namespace Joymg.Platformer2D.States
         {
             CalculateSpeed(_agent.agentInput.MovementVector);
             CalculateHorizontalDirection();
-            movementData.currentVelocity = Vector3.right * (movementData.horizontalMovementDirection * movementData.currentSpeed);
+            movementData.currentVelocity =
+                Vector3.right * (movementData.horizontalMovementDirection * movementData.currentSpeed);
             movementData.currentVelocity.y = _agent.body.velocity.y;
-            
         }
 
         protected void CalculateHorizontalDirection()
