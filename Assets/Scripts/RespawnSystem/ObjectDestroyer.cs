@@ -18,7 +18,7 @@ namespace Joymg.Platformer2D.RespawnSystem
             {
                 if (!other.TryGetComponent(out Agent agent))
                 {
-                    Destroy(agent.gameObject);
+                    Destroy(other.gameObject);
                 }
                 agent.damageable.GetHit(null,1);
                 if (agent.damageable.CurrentHealth == 0 && agent.gameObject.layer == LayerMask.NameToLayer("Player"))
