@@ -15,13 +15,16 @@ namespace Joymg.Platformer2D.States
             }
         }
 
-        protected override void HandleMovement(Vector2 input)
+        public override void UpdateState()
         {
-            if (_agent.climbingDetector && _agent.climbingDetector.CanClimb && Mathf.Abs(input.y) > 0)
+            if (IsFalling())
+                return;
+            
+            if (_agent.climbingDetector && _agent.climbingDetector.CanClimb && Mathf.Abs(_agent.agentInput.MovementVector.y) > 0)
             {
                 _agent.SetState(_agent.StateFactory.GetState(StateType.Climb));
             }
-            else if (Mathf.Abs(input.x) > 0)
+            else if (Mathf.Abs(_agent.agentInput.MovementVector.x) > 0)
             {
                 _agent.SetState(_agent.StateFactory.GetState(StateType.Move));
             }
