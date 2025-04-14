@@ -568,7 +568,6 @@ GameObject:
   - component: {fileID: 433439660612080544}
   - component: {fileID: 7588408607640187528}
   - component: {fileID: 6201243098725326664}
-  - component: {fileID: 5475793114848492577}
   m_Layer: 15
   m_Name: Ground Collider
   m_TagString: Untagged
@@ -649,22 +648,6 @@ MonoBehaviour:
   boxCastHeight: 1
   groundedGizmosColor: {r: 0, g: 1, b: 0, a: 1}
   airborneGizmoColor: {r: 1, g: 0, b: 0, a: 1}
---- !u!114 &5475793114848492577
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6161727986745025761}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c98160291c047308954e179e61ba6bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  climbingLayermask:
-    serializedVersion: 2
-    m_Bits: 256
-  canClimb: 0
 --- !u!1 &6476928038083728313
 GameObject:
   m_ObjectHideFlags: 0
@@ -1044,7 +1027,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  initialWeaponData: {fileID: 0}
 --- !u!114 &1030965157693924500
 MonoBehaviour:
   m_ObjectHideFlags: 0
