@@ -1,5 +1,5 @@
 ﻿using System;
-using Joymg.Platformer2D.AI.Behaviour;
+using Joymg.Platformer2D.AI.Behaviours;
 using Joymg.Platformer2D.Detectors;
 
 namespace Joymg.Platformer2D.AI

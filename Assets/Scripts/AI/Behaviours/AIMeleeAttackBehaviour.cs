@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections;
-using Joymg.Platformer2D.AI.Behaviour;
+using Joymg.Platformer2D.AI.Behaviours;
 using UnityEngine;
 using UnityEngine.Serialization;
 

@@ -3,7 +3,7 @@ using Joymg.Platformer2D.Detectors;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Joymg.Platformer2D.AI.Behaviour
+namespace Joymg.Platformer2D.AI.Behaviours
 {
     public class AIPatrolBehaviour : AIBehaviour
     {
