@@ -9,10 +9,17 @@ namespace Joymg.Platformer2D.WeaponSystem
     [Serializable]
     public class WeaponStorage
     {
-        private List<WeaponData> _weaponList = new();
+        [SerializeField] private List<WeaponData> _weaponList = new();
         private int _currentWeaponIndex = -1;
         public int WeaponCount => _weaponList.Count;
         
+        public void Initialize()
+        {
+            if (_currentWeaponIndex == -1 && _weaponList.Count > 0)
+            {
+                _currentWeaponIndex = 0;
+            }
+        }
 
         public WeaponData GetCurrentWeapon()
         {

@@ -17,7 +17,8 @@ namespace Joymg.Platformer2D.WeaponSystem
 
         private void Awake()
         {
-            _storage = new WeaponStorage();
+            _storage ??= new WeaponStorage();
+            _storage.Initialize();
             weaponSprite = GetComponent<SpriteRenderer>();
             SetWeaponVisibility(false);
         }
