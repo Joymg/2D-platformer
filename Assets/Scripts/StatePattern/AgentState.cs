@@ -18,17 +18,19 @@ namespace Joymg.Platformer2D.States
             _agent.agentInput.OnJumpReleased += HandleJumpReleased;
             _agent.agentInput.OnAttack += HandleAttack;
             OnEnter?.Invoke();
-            Debug.Log($"Entering Agent state");
             
             PerformEnter();
         }
 
         protected virtual void PerformEnter()
         {
-            Debug.Log($"Performing enter state {GetType().Name}");
+            Debug.Log($"Agent: <color=green>{_agent.gameObject.name}</color> --> <color=red>{GetType().Name}</color>");
         }
-        
-        public override void UpdateState() { }
+
+        public override void UpdateState()
+        {
+            IsFalling();
+        }
 
         protected bool IsFalling()
         {
@@ -58,6 +60,7 @@ namespace Joymg.Platformer2D.States
         {
             if (_agent.groundDetector.isGrounded)
             {
+                Debug.Log($"Jumping enabled : {_agent.groundDetector.isGrounded}");
                 _agent.SetState(_agent.StateFactory.GetState(StateType.Jump));   
             }
         }
